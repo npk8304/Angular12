@@ -1,0 +1,42 @@
+/* *{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+} */
+
+.main {
+    width: 100%;
+    padding: 10px;
+    background-color: #ccc;
+    /* display: flex;
+    flex-wrap: wrap; */
+}   
+.sub-main {
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+}
+.card {
+    background-color: #ccc;
+    margin: 10px;
+    height: 220px;
+    left: 15%;
+
+    
+}
+.iconsforhome {
+    font-size: 5rem;
+    color: cornflowerblue;
+}
+.card-body {
+    text-align: center;
+}
+.btn {
+    color: white;
+}
+.isdisable {
+    cursor:not-allowed
+}
+/* .isdisable:hover{
+    cursor:not-allowed
+} */

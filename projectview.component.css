@@ -1,0 +1,141 @@
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: ">\00a0";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+.th1 {
+ background-color: #F3F3F3;
+ color: #333333;
+}
+
+table{
+margin: 10px;
+border: 1px solid #DDD;
+}
+.add1{
+    color: white;
+    background-color: #1f92E5;
+    margin-right: 5px;
+}
+.add1:hover{
+    background-color: #337AB7;
+}
+.copy{
+    color: white;
+    background-color: #1f92E5;
+    margin-right: 5px;
+}
+.copy:hover{
+    background-color: #337AB7;
+}
+.redl{
+    border-left: 2px solid red;
+}
+.redl1{
+    border-left: 2px solid red;
+    width: 100% !important;
+    text-align: right;
+}
+.redl1:hover{
+  background-color: #1F92E5;
+  color: white;
+}
+.main{
+    background-color: #ccc;
+    width: 100%;
+    padding: 2%;
+}
+.sub-main {
+    background-color: white;
+    padding: 40px;
+    width: 100%;
+}
+.last {
+    text-align: end;
+}
+
+
+/* Spinner */
+div.loadingPause {
+    display: block;
+    background: rgba(0, 0, 0, 0.66) no-repeat 0 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .loading i {
+    color: white;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #spinner {
+      -webkit-animation: frames 1s infinite linear;
+      animation: frames 1s infinite linear;
+      background: transparent;
+      border: 1.75vw solid #FFF;
+      border-radius: 100%;
+      border-top-color: #DF691A;
+      width: 20vw;
+      height: 20vw;
+      opacity: .6;
+      padding: 0;
+      position: absolute;
+      z-index: 999;
+  }
+  @keyframes frames {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+  
+  #pause {
+      display: block;
+      background:
+          rgba(0, 0, 0, 0.66)
+          no-repeat
+          0 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+  }
+  

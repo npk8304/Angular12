@@ -1,0 +1,145 @@
+<div id="pause" class="d-flex align-items-center justify-content-center" *ngIf="loading">
+    <div id="spinner"></div>
+  </div>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <div class="container-fluid">
+      <p class="navbar-brand">Logo | Language of graghics</p>
+    </div>
+    <div class="dropdown">
+      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+        {{roleName}}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!--breadcrumb-->
+  
+  <ul class="breadcrumb">
+    <li><a href="#" routerLink="/dash-board">Home</a></li>
+    <li><a href="#">Catalog</a></li>
+    <li>Projects</li>
+  </ul>
+  
+  <!-- Modal -->
+  
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New project</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="FormDemo">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="name">Name</label>
+              </div>
+              <div class="col-md-10">
+                <input type="text" formControlName="Name" class="form-control redl" id="name">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-2">
+                <label for="description">Description</label>
+              </div>
+              <div class="col-md-10">
+                <textarea class="form-control  redl" formControlName="Description" rows="3" id="description"
+                  name="description"></textarea>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-2">
+                <label for="status">Status</label>
+              </div>
+              <div class="col-md-10">
+                <select id="select" formControlName="StatusName" class="form-control">
+                  <option value="" selected>Select</option>
+                  <option>Created</option>
+                  <option>In Progress</option>
+                  <option>Completed</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-primary" (click)=" OnSubmit()">CREATE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!--Table-->
+  
+  <div class="main">
+    <div class="sub-main">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <button class="input-group-text"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+        <div class="col-md-4 m-l-5">
+          <span> {{selectedMsg}} </span>
+        </div>
+        <div class="col-md-4 m-l-6 last">
+          <div>
+            <button type="button" class="btn add1" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              *ngIf="roleName === 'Admin'">
+              ADD</button>
+            <button type="button" class="btn copy" *ngIf="roleName === 'Admin' && selectedCount == 1">EDIT</button>
+            <button type="button" class="btn copy" *ngIf="roleName === 'Admin' && selectedCount == 1">EXPORT</button>
+            <button type="button" class="btn copy" *ngIf="roleName === 'Admin' && selectedCount == 1">Copy</button>
+            <button type="button" class="btn btn-outline-danger" *ngIf="roleName === 'Admin' && selectedCount == 1"
+              (click)="OnDelete()">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row mt-3">
+          <table class="table table-striped">
+            <colgroup>
+              <col width="3%">
+              <col width="*">
+              <col width="35%">
+              <col width="15%">
+            </colgroup>
+            <thead class="thread-light th1">
+              <tr>
+                <th *ngIf="roleName == 'Admin'">
+                  <input type="checkbox" name="checkAll" [(ngModel)]="selectedAll" (change)="selectAll();">
+                </th>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+                <th>CREATED ON</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of lstProjectDtls">
+                <td *ngIf="roleName == 'Admin'"><input type="checkbox" [(ngModel)]="project.isChecked"
+                    (change)="checkIfAllSelected();"></td>
+                <td>
+                  <a href="#" routerLink="/screen4">{{project.Name}}</a>
+                </td>
+                <td>{{project.Description}}</td>
+                <td></td>
+                <td>{{project.StatusName}}</td>
+              </tr>
+            </tbody>
+            <!-- <tfoot class="text-center">
+               
+            </tfoot> -->
+          </table> 
+        </div>
+      </div>
+    </div>
+  </div>

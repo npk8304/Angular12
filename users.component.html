@@ -1,0 +1,118 @@
+<div class="main-top">
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <div class="input-group" style="right: 10px;">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+        <button class="input-group-text"><i class="bi bi-search"></i></button>
+      </div>
+    </div>
+    <div class="col-md-2 m-l-5" style="margin-top: 5px;">
+      <span> {{selectedMsg}} </span>
+    </div>
+    <div class="col-md-7 m-l-6 last">
+      <div>
+        <button type="button" style="margin-right: 2px;" class="btn btn-outline-secondary btn1"
+          *ngIf="selectedCount == 1">Edit</button>
+        <button type="button" style="margin-right: 2px;" class="btn btn-outline-secondary btn1"
+          *ngIf="selectedCount > 0">Copy</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+            class="bi bi-person-plus"></i> Assigin user</button>
+        <button type="button" style="margin-left: 2px;" class="btn btn-outline-secondary btn1" *ngIf="selectedCount > 0"
+          (click)="OnDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- tabel -->
+
+  <div class="row mt-3">
+    <table class="table table-striped table-bordered">
+      <thead class="thread-light th1">
+        <tr>
+          <th style="text-align: center; width: 50px;"><input type="checkbox" name="checkAll" [(ngModel)]="selectedAll"
+              (change)="selectAll();"></th>
+          <th>USER</th>
+          <th>USER GROUP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alluser of allusereslst | filter:searchText">
+          <td style="text-align: center;"><input type="checkbox" [(ngModel)]="alluser.isChecked"
+              (change)="checkIfAllSelected();"></td>
+          <td>{{alluser.UserName}}</td>
+          <td>{{alluser.UserGroupName}}</td>
+        </tr>
+      </tbody>
+      <tfoot class="text-center" style="min-height: 0px;">
+        <td colspan="5">
+          <div *ngIf="(allusereslst | filter: searchText).length > 0; else noResults">
+
+          </div>
+
+        </td>
+      </tfoot>
+    </table>
+    <ng-template #noResults>
+      <p>No results found for "{{searchText}}".</p>
+    </ng-template>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Assign User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- input -->
+        <form [formGroup]="FormDemo">
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label for="usergroup">User Group</label>
+            </div>
+            <div class="col-md-8">
+              <select id="usergroup" formControlName="UserGroupid" class="form-control" (change)="getusers($event)">
+                <!-- [(ngModel)]=selectedUsergGroupId -->
+                <option value="0" selected>Select</option>
+                <option *ngFor="let usergroup of usergrouplst" [value]="usergroup.id">{{usergroup.Name}}</option>
+              </select>
+              <div *ngIf="isSubmitted && form.UserGroupid.errors" class="text-danger">
+                <span *ngIf="form.UserGroupid.errors.required">Please select UserGroup.</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label for="user">User</label>
+            </div>
+            <div class="col-md-8">
+              <!-- <select id="user" formControlName="Userid" class="form-control">
+                <option value="0" selected>Select</option>
+                <option *ngFor="let user of filterusers" [value]="user.id">{{user.Name}}</option>
+              </select>
+              <div *ngIf="isSubmitted && form.Userid.errors" class="text-danger">
+                <span *ngIf="form.Userid.errors.required">Please select User.</span>
+              </div>  -->
+              <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList" formControlName="UsersNew">
+              </ng-multiselect-dropdown>
+              <div *ngIf="isSubmitted && form.UsersNew.errors" class="text-danger">
+                <span *ngIf="form.UsersNew.errors.required">Please select User.</span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- input -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+        <button type="button" class="btn btn-primary" (click)="OnSubmit()">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>

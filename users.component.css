@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    /* padding: 0px;
+    margin: 0px; */
+}
+.bi-person-plus{
+    font-size:20px; 
+}
+
+.main-top{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #CCCCCC;
+} 
+.last {
+    text-align: end;
+}
+.btn1{
+    padding: 9px;
+}

@@ -1,0 +1,52 @@
+<div class="main">
+    <div class="sub-main">
+        <div class="sigin shadow-lg p-3 mb-5 bg-white rounded">
+            <div>
+                <form [formGroup]="lgnForm">
+                    <h1 class="text-success">Sign in</h1>
+                    <p>Stay updated on your Profession world</p>
+                    <div class="row mb-3">
+                        <div>
+                            <input type="email" placeholder="Email or Phone" formControlName="email"
+                                class="form-control" id="emial">
+                            <div *ngIf="isSubmitted && form.email.errors" class="text-danger">
+                                <span *ngIf="form.email.errors.required">Please enter email.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="input-group">
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="Password">
+                            <button class="input-group-text"><i class="bi bi-eye-slash"></i></button>
+                        </div>
+                        <div *ngIf="isSubmitted && form.password.errors" class="text-danger">
+                            <span *ngIf="form.password.errors.required">Please enter password.</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div>
+                            <a href="#" class="fpsw">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div>
+                            <button type="button" class="btn btn1" (click)="onSubmit()"> Sign in</button>
+                        </div>
+                    </div>
+                    <div class="center mb-2">
+                        <P class="line">or</P>
+                    </div>
+                    <div class="row mb-3">
+                        <div>
+                            <button type="button" class="btn btn1">Sign in with AET</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="center">
+                    New to AET? <a href="#">Join now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

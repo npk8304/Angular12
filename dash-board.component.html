@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<div class="container-fluid">
+      <p class="navbar-brand">Logo | Language of graghics</p>
+    </div>
+    <div class="dropdown">
+      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+        {{roleName}}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Logout</a></li>
+      </ul>
+    </div>
+</nav> 
+<div class="main">
+    <div class="sub-main">
+      <div class="row"> 
+        <div class="card col-md-4"*ngFor="let e of lstRoles">
+          <div class="card-body">
+            <i class="bi bi-person-bounding-box iconsforhome"></i>
+            <h5 class="card-title"> {{e.section}}</h5>  
+            <button [disabled]='e.isdisable' routerLink="/project"
+            [ngClass]="{'isdisable': e.isdisable}">Disable me</button>
+          </div>
+        </div>
+    </div> 

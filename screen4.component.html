@@ -1,0 +1,63 @@
+<app-menu></app-menu>
+
+<!--breadcrumb-->
+
+<ul class="breadcrumb">
+    <li><a href="#" routerLink="/dash-board">Home</a></li>
+    <li><a href="#">Catalog</a></li>
+    <li><a href="#">Projects</a></li>
+    <li>Project Name</li>
+</ul>
+
+  <section id="tabs">
+    <div class="container-fluid">
+        <div class="row">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#tier1">USER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tier2">ASSETS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tier3">ENVIRONMENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#MAP view">MAP VIEW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tier4">VR ROOM</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="tier1" class="tab-pane active" *ngIf="roleName === 'Admin'">
+
+                    <app-users></app-users>
+
+                </div>
+                <div id="tier2" class="container tab-pane fade"><br>
+
+                    <h3>ASSETS</h3>
+
+                </div>
+                <div id="tier3" class="container tab-pane fade"><br>
+
+                    <h3>ENVIRONMENT</h3>
+
+                </div>
+                <div id="map view" class="container tab-pane fade"><br>
+
+                    <h3>MAP VIEW</h3>
+
+                </div>
+                <div id="tier4" class="container tab-pane fade"><br>
+
+                    <h3>VR ROOM</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
